@@ -14,7 +14,7 @@ def aws_client(region: str, service: str):
         return ec2
     elif check_iam_role_exists() is True:
         print("Executing with IAM Role")
-        ec2 = boto3.client('ec2', region_name=region)
+        ec2 = boto3.client(service, region_name=region)
         return ec2
     else:
         print("=============== Please use either IAM role or ACCESS and SECRET keys===============")

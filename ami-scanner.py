@@ -20,10 +20,10 @@ class AmiCompliance:
         response = self.ec2_client.describe_instances()
         for _i in response['Reservations']:
             for _instances in _i['Instances']:
-                instance_id = _instances['InstanceId']
-                image_id = _instances['ImageId']
-                instances[instance_id] = image_id
-        print(instances)
+                if _instances['State']['Name'] == "running":
+                    instance_id = _instances['InstanceId']
+                    image_id = _instances['ImageId']
+                    instances[instance_id] = image_id
         return instances
 
     def describe_ami(self):
@@ -73,5 +73,6 @@ class AmiCompliance:
                 return response
 
 
-val = AmiCompliance()
-val.publish_email_via_sns()
+if __name__ == "__main__":
+    run_script = AmiCompliance()
+    run_script.publish_email_via_sns()

@@ -12,5 +12,5 @@ mitigate the security issues as per the AMI compliance process
 
 [WIP]
 - Create Cloudformation or Terraform template to automate the deployment
-- Create Flow chart to explain the script and deployment architecture 
-- 
+- Create Flow chart to explain the script and deployment architecture
+- Improve the code with unit testcase either pytest or unittest
