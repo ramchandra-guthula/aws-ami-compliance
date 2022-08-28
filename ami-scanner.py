@@ -1,6 +1,6 @@
 from aws_client_conf import aws_client
 from datetime import datetime, timedelta
-import  emoji
+import emoji
 
 
 def how_old_is_ami(ami_date: str):
