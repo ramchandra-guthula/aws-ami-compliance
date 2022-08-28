@@ -1,5 +1,6 @@
 from aws_client_conf import aws_client
 from datetime import datetime, timedelta
+import  emoji
 
 
 def how_old_is_ami(ami_date: str):
@@ -57,8 +58,7 @@ class AmiCompliance:
                     Number of days old      :   {ami_days}
                     Status                  :   Need to update the AMI
                     ------------------------------------------------------------------------------------
-                
-                """.format(
+                    """.format(
                     instance_id=_instance['instance_id'],
                     ami=_instance['ami_id'],
                     date=_instance['create_date'],
@@ -68,7 +68,7 @@ class AmiCompliance:
                 response = self.sns_client.publish(
                     TopicArn=topic_arn,
                     Message=msg,
-                    Subject="/!\\ AWS AMI compliance Engine /!\\"
+                    Subject=f"{emoji.emojize(':warning:')} AWS AMI compliance Engine {emoji.emojize(':warning:')}"
                 )
                 return response
 
